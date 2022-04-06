@@ -1,0 +1,13 @@
+TradeID,DestinationMSG
+5001,"<NewTrade>
+<id>5001</id>
+<trade>
+        <cparty>Morgan</cparty>
+</trade>
+</NewTrade>"
+5002,"<NewTrade>
+<id>5002</id>
+<trade>
+        <cparty>Bloomberg</cparty>
+</trade>
+</NewTrade>"
