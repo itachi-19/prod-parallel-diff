@@ -11,3 +11,9 @@ TradeID,DestinationMSG
         <cparty>Bloomberg132</cparty>
 </trade>
 </NewTrade>"
+5003,"<NewTrade>
+<id>5003</id>
+<trade>
+        <cparty>Bloomberg14</cparty>
+</trade>
+</NewTrade>"
