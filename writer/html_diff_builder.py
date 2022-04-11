@@ -21,20 +21,28 @@ class HTMLDiffBuilder:
 
 
     def append_diffs(self, all_diffs):
+        trade_number = 1
         for trade in all_diffs:
             param_extractor = ParamExtractor(trade[1])
+
             trade_id = trade[0]
             xpaths = param_extractor.get_xpaths()
             icapture_vals = param_extractor.get_icapture_vals()
             fidstp_vals = param_extractor.get_fidstp_vals()
+
             d = {
+                'slno': trade_number,
                 'trade_id': trade_id,
                 'xpaths': xpaths,
                 'icapture_vals': icapture_vals,
                 'fidstp_vals': fidstp_vals
             }
+
             diff = self.diff_template.substitute(d)
+
             self.string_builder.append(diff)
+
+            trade_number += 1
 
     def append_not_found(self, missing_trades):
         d = { 'missing_len': len(missing_trades) }
