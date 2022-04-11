@@ -1,14 +1,20 @@
-from generic_xml import GenericXML
+from msg_xml.generic_xml import GenericXML
+import xml.etree.ElementTree as ET
 import io
 
 
 class FileXML(GenericXML):
 
     def __init__(self, message):
-        self.file = io.StringIO() # dummy file
-        self.file.write(message)
-        self.file.seek(0)
+        self.file = FileXML.get_dummy_file(message) # dummy file
         super().__init__(message)
+    
+    @staticmethod
+    def get_dummy_file(message):
+        file = io.StringIO()
+        file.write(message)
+        file.seek(0)
+        return file
 
     def path_generator(self):
         path = []

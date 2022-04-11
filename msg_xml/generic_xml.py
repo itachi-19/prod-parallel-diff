@@ -10,7 +10,10 @@ class GenericXML:
         pass
 
     def get_value_for_xpath(self, xpath):
-        return self.root.find(xpath).text.strip()
+        try:
+            return self.root.find(xpath).text.strip()
+        except AttributeError:
+            return None
 
     def get_msg():
         return self.message

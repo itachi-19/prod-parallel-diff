@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<style>
+    h1  {
+        text-align: center
+    }
+</style>
+
+</head>
+    <body>
+        <br>
+          <h1 class="self-center text-xl tracking-tight font-arial fond-bold content-evenly text-gray-900 sm:text-5xl md:text-4xl">
+            <span class="block xl:inline">Prod Parallel Report</span>
+          </h1>
+          <br>
+    <!-- -------------------------- -->
+    <div class="max-w-3xl mx-auto">
+        <div class="overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="inline-block min-w-full align-middle">
+                <div class="overflow-hidden ">
+                    <table class="min-w-full divide-y divide-gray-300 table-fixed dark:divide-gray-700">
+                        <thead class="bg-gray-100 dark:bg-blue-100">
+                            <tr>
+                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-white-700 uppercase dark:text-white-400">Trade_id</th>
+                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">XPath</th>
+                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">iCapture Value</th>
+                                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">FIDSTP Value</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <td class="py-4 px-6 text-base font-bold text-gray-500 whitespace-nowrap dark:text-white">5001</td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    ./trade/cparty
+                                </td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">Black Rock</td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">Morgan</td>
+                            </tr>
+                            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <td class="py-4 px-6 text-base font-bold text-gray-500 whitespace-nowrap dark:text-white">5002</td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    ./trade/cparty<br>./id
+                                </td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">Bloomberg132<br>50023</td>
+                                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">Bloomberg<br>5002</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br><b>1 Missing Trades:</b><br>
+        - 5003
+    </body>
+</html>
