@@ -1,9 +1,9 @@
 #! /usr/bin/env python3
 
 
-from xml_msg import XMLMsg
-from csv_reader import CSVReader
-from trade_reader import TradeReader
+from garbage.xml_msg import XMLMsg
+from reader.csv_reader import CSVReader
+from reader.trade_reader import TradeReader
 from tests.test_resources import *
 import unittest
 
@@ -25,30 +25,28 @@ class XMLTestCase(unittest.TestCase):
 class CSVReaderTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.reader = CSVReader('input/icapture.csv')
+        self.reader = CSVReader()
 
-    def test_get_trades(self):
-        self.assertEqual(self.reader.get_trades(), icapture_trades)
+    def test_get_trades_for(self):
+        self.assertEqual(self.reader.get_trades_for('input/icapture.csv'), icapture_trades)
 
 
 class TradeReaderTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.reader = TradeReader('input/icapture.csv', 'input/fidstp.csv')
+        self.icapture_file = 'input/icapture.csv'
+        self.fidstp_file = 'input/fidstp.csv'
+        self.reader = TradeReader(self.icapture_file, self.fidstp_file)
 
     def test_get_icapture_trades(self):
         self.assertEqual(self.reader.icapture_trades['5001'], icapture_msg1)
-
-    def test_get_trades_for(self):
-        #trades = self.reader.icapture_trades
-        self.assertEqual(self.reader.get_trades_for('input/icapture.csv'), icapture_trades)
 
     def test_get_trade_ids(self):
         s = set()
         s.add('5001')
         s.add('5002')
         s.add('5003')
-        self.assertEqual(TradeReader.get_trade_ids(icapture_trades), s)
+        self.assertEqual(TradeReader.get_trade_ids(self.reader.icapture_trades), s)
 
     def test_get_missing_trades(self):
         missing_trades = self.reader.get_missing_trades()

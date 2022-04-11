@@ -1,22 +1,12 @@
-from csv_reader import CSVReader
+from .csv_reader import CSVReader
 
 
 class TradeReader():
     
-    def __init__(self, icapture, fidstp):
-        self.icapture = icapture
-        self.fidstp = fidstp
-        self.icapture_trades = self.get_trades_for(self.icapture)
-        self.fidstp_trades = self.get_trades_for(self.fidstp)
-
-    @staticmethod
-    def get_trades_for(file_name):
-        reader = CSVReader(file_name)
-        return reader.get_trades()
-
-    def get_trades(self):
-        trades = self.combine_trades()
-        return trades
+    def __init__(self, icapture_file, fidstp_file):
+        reader = CSVReader()
+        self.icapture_trades = reader.get_trades_for(icapture_file)
+        self.fidstp_trades = reader.get_trades_for(fidstp_file)
 
     @staticmethod
     def get_trade_ids(trades):
@@ -27,9 +17,14 @@ class TradeReader():
         fidstp_trade_ids = self.get_trade_ids(self.fidstp_trades)
         return icapture_trade_ids - fidstp_trade_ids
 
-    def combine_trades(self):
+    def merge_trades(self):
         trades = {
             trade_id: (self.icapture_trades[trade_id], self.fidstp_trades[trade_id])
             for trade_id in self.fidstp_trades
         }
         return trades
+
+    def get_merged_trades(self):
+        return self.merge_trades()
+
+
